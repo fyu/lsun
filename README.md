@@ -1,4 +1,4 @@
-# lsun_toolkit
+# LSUN Scene Classification
 
 ## Data Release v0 (2015-04-01)
 
