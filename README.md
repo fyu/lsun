@@ -13,4 +13,4 @@ Python dependency: numpy, lmdb, opencv
 
 Usage:
 
-python view_image_db.py <image db path>
+<pre><code>python view_image_db.py <image db path> </code></pre>
