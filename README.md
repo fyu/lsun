@@ -7,9 +7,9 @@ All the images in one category are stored in one lmdb database file. The value
 
 ## Demo code
 
-You need first install python
+Install Python
 
-Python dependency: numpy, lmdb, opencv
+Install Python dependency: numpy, lmdb, opencv
 
 Usage:
 
