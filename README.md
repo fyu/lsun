@@ -1,9 +1,10 @@
 # LSUN Scene Classification
 
-## Data Release v0 (2015-04-01)
+## Data Release
 
 All the images in one category are stored in one lmdb database file. The value
- of each entry is the jpg binary data. We resize all the images to 256 x 256.
+ of each entry is the jpg binary data. We resize all the images so that the 
+ smaller dimension is 256 and compress the images in jpeg with quality 75.
 
 ## Demo code
 
