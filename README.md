@@ -8,10 +8,22 @@ All the images in one category are stored in one lmdb database file. The value
 
 ## Demo code
 
+### Dependency
+
 Install Python
 
 Install Python dependency: numpy, lmdb, opencv
 
-Usage:
+### Usage:
 
-<pre><code>python view_image_db.py &lt;image db path&gt; </code></pre>
+View the lmdb content
+
+```bash
+python data.py view <image db path>
+```
+
+Export the images to a folder
+
+```bash
+python data.py export <image db path> --out_dir <output directory>
+```
