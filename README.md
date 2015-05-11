@@ -14,7 +14,7 @@ Install Python
 
 Install Python dependency: numpy, lmdb, opencv
 
-### Usage:
+### Usage
 
 View the lmdb content
 
@@ -28,7 +28,7 @@ Export the images to a folder
 python2.7 data.py export <image db path> --out_dir <output directory>
 ```
 
-### Example:
+### Example
 
 Export all the images in valuation sets in the current folder to a "data"
 subfolder.
