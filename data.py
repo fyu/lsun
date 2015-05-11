@@ -48,7 +48,7 @@ def export_images(db_path, out_dir):
             with open(image_out_path, 'w') as fp:
                 fp.write(val)
             count += 1
-            if count % 100 == 0:
+            if count % 1000 == 0:
                 print('Finished', count, 'images')
 
 
