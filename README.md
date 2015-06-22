@@ -1,4 +1,4 @@
-# LSUN Scene Classification
+# LSUN
 
 ## Data Release
 
@@ -8,6 +8,17 @@ file. The value
  that the
   smaller dimension is 256 and compress the images in jpeg with
   quality 75.
+  
+### Citing LSUN
+
+If you find LSUN dataset useful in your research, please consider citing:
+
+    @article{yu15lsun,
+        Author = {Yu, Fisher and Zhang, Yinda and Song, Shuran and Seff, Ari and Xiao, Jianxiong},
+        Title = {LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop},
+        Journal = {arXiv preprint arXiv:1506.03365},
+        Year = {2015}
+    }
 
 ## Demo code
 
