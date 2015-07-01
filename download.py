@@ -37,14 +37,25 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--tag', type=str, default='latest')
     parser.add_argument('-o', '--out_dir', default='')
+    parser.add_argument('-c', '--category', default=None)
     args = parser.parse_args()
 
     categories = list_categories(args.tag)
-    print('Downloading', len(categories), 'categories')
-    for category in categories:
-        download(args.out_dir, category, 'train', args.tag)
-        download(args.out_dir, category, 'val', args.tag)
-    download(args.out_dir, '', 'test', args.tag)
+    if args.category is None:
+        print('Downloading', len(categories), 'categories')
+        for category in categories:
+            download(args.out_dir, category, 'train', args.tag)
+            download(args.out_dir, category, 'val', args.tag)
+        download(args.out_dir, '', 'test', args.tag)
+    else:
+        if args.category == 'test':
+            download(args.out_dir, '', 'test', args.tag)
+        elif args.category not in categories:
+            print('Error:', args.category, "doesn't exist in",
+                  args.tag, 'LSUN release')
+        else:
+            download(args.out_dir, args.category, 'train', args.tag)
+            download(args.out_dir, args.category, 'val', args.tag)
 
 
 if __name__ == '__main__':
