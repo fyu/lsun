@@ -20,6 +20,19 @@ If you find LSUN dataset useful in your research, please consider citing:
         Year = {2015}
     }
 
+### Download data
+Please make sure you have cURL installed
+```bash
+# Download the whole latest data set
+python2.7 download.py
+# Download the whole latest data set to <data_dir>
+python2.7 download.py -o <data_dir>
+# Download data for bedroom
+python2.7 download.py -c bedroom
+# Download testing set
+python2.7 download.py -c test
+```
+
 ## Demo code
 
 ### Dependency
