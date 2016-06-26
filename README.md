@@ -1,6 +1,6 @@
 # LSUN
 
-Please check [LSUN webpage](yf.io/p/lsun) for more information about the dataset.
+Please check [LSUN webpage](http://www.yf.io/p/lsun) for more information about the dataset.
 
 ## Data Release
 
