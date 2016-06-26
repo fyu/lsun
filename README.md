@@ -1,5 +1,7 @@
 # LSUN
 
+Please check [LSUN webpage](yf.io/p/lsun) for more information about the dataset.
+
 ## Data Release
 
 All the images in one category are stored in one lmdb database
