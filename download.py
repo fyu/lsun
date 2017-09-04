@@ -7,7 +7,7 @@ import json
 from os.path import join
 
 import subprocess
-import urllib2
+from six.moves.urllib.request import urlopen
 
 __author__ = 'Fisher Yu'
 __email__ = 'fy@cs.princeton.edu'
@@ -16,7 +16,7 @@ __license__ = 'MIT'
 
 def list_categories(tag):
     url = 'http://lsun.cs.princeton.edu/htbin/list.cgi?tag=' + tag
-    f = urllib2.urlopen(url)
+    f = urlopen(url)
     return json.loads(f.read())
 
 
@@ -51,8 +51,8 @@ def main():
         if args.category == 'test':
             download(args.out_dir, '', 'test', args.tag)
         elif args.category not in categories:
-            print('Error:', args.category, "doesn't exist in",
-                  args.tag, 'LSUN release')
+            print('Error:', args.category, "doesn't exist in", args.tag,
+                  'LSUN release')
         else:
             download(args.out_dir, args.category, 'train', args.tag)
             download(args.out_dir, args.category, 'val', args.tag)
