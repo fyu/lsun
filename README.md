@@ -34,7 +34,7 @@ python2.7 download.py -c bedroom
 # Download testing set
 python2.7 download.py -c test
 # Download validation set
-python2.7 download.py -c test
+python2.7 download.py -c val
 ```
 
 ## Demo code
