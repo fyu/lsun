@@ -50,6 +50,9 @@ def main():
     else:
         if args.category == 'test':
             download(args.out_dir, '', 'test', args.tag)
+        elif args.category == 'val':
+            for category in categories:
+                download(args.out_dir, category, 'val', args.tag)
         elif args.category not in categories:
             print('Error:', args.category, "doesn't exist in",
                   args.tag, 'LSUN release')
