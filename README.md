@@ -26,13 +26,13 @@ If you find LSUN dataset useful in your research, please consider citing:
 Please make sure you have cURL installed
 ```bash
 # Download the whole latest data set
-python2.7 download.py
+python3 download.py
 # Download the whole latest data set to <data_dir>
-python2.7 download.py -o <data_dir>
+python3 download.py -o <data_dir>
 # Download data for bedroom
-python2.7 download.py -c bedroom
+python3 download.py -c bedroom
 # Download testing set
-python2.7 download.py -c test
+python3 download.py -c test
 ```
 
 ## Demo code
@@ -48,13 +48,13 @@ Install Python dependency: numpy, lmdb, opencv
 View the lmdb content
 
 ```bash
-python2.7 data.py view <image db path>
+python3 data.py view <image db path>
 ```
 
 Export the images to a folder
 
 ```bash
-python2.7 data.py export <image db path> --out_dir <output directory>
+python3 data.py export <image db path> --out_dir <output directory>
 ```
 
 ### Example:
@@ -64,7 +64,7 @@ Export all the images in valuation sets in the current folder to a
 subfolder.
 
 ```bash
-python2.7 data.py export *_val_lmdb --out_dir data
+python3 data.py export *_val_lmdb --out_dir data
 ```
 
 ## Submission
