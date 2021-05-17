@@ -1,4 +1,4 @@
-# LSUN
+# Large-scale Scene Understanding (LSUN)
 
 Please check [LSUN webpage](http://www.yf.io/p/lsun) for more information about the dataset.
 
