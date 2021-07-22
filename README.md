@@ -37,6 +37,7 @@ python3 download_scenes.py -c bedroom church
 # Download testing set
 python3 download_scenes.py -c test
 
+# The options work in the download script of the object dataset.
 python3 download_objects.py
 python3 download_objects.py -o <data_dir>
 python3 download_objects.py -c cat
