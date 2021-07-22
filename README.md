@@ -27,13 +27,20 @@ If you find LSUN dataset useful in your research, please consider citing:
 Please make sure you have cURL installed
 ```bash
 # Download the whole latest data set
-python3 download.py
+python3 download_scenes.py
 # Download the whole latest data set to <data_dir>
-python3 download.py -o <data_dir>
+python3 download_scenes.py -o <data_dir>
 # Download data for bedroom
-python3 download.py -c bedroom
+python3 download_scenes.py -c bedroom
+# It supports the option for multiple categories
+python3 download_scenes.py -c bedroom church
 # Download testing set
-python3 download.py -c test
+python3 download_scenes.py -c test
+
+python3 download_objects.py
+python3 download_objects.py -o <data_dir>
+python3 download_objects.py -c cat
+python3 download_objects.py -c cat dog
 ```
 
 ## Demo code
