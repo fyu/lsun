@@ -36,7 +36,7 @@ def download(out_dir, category, set_name):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', '--out_dir', default='')
-    parser.add_argument('-c', '--category', nargs='+', type=str, defualt=None)
+    parser.add_argument('-c', '--category', nargs='+', type=str, default=None)
     args = parser.parse_args()
     makedirs(args.out_dir, exist_ok=True)
 

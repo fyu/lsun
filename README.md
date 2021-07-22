@@ -33,7 +33,7 @@ python3 download_scenes.py -o <data_dir>
 # Download data for bedroom
 python3 download_scenes.py -c bedroom
 # It supports the option for multiple categories
-python3 download_scenes.py -c bedroom church
+python3 download_scenes.py -c bedroom church_outdoor
 # Download testing set
 python3 download_scenes.py -c test
 
