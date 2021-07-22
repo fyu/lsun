@@ -1,6 +1,7 @@
 # LSUN
 
 Please check [LSUN webpage](http://www.yf.io/p/lsun) for more information about the dataset.
+This forked repo includes the code to download LSUN object dataset.
 
 ## Data Release
 
