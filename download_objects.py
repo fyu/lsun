@@ -3,6 +3,7 @@
 from __future__ import print_function, division
 import argparse
 from os.path import join
+from os import makedirs
 
 import subprocess
 from urllib.request import Request, urlopen
@@ -26,6 +27,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', '--out_dir', default='')
     args = parser.parse_args()
+    makedirs(args.out_dir, exist_ok=True)
 
     categories = ['airplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'dining_table', 'dog', 'horse', 'motorbike', 'person', 'potted_plant', 'sheep', 'sofa', 'train' ,'tv-monitor']
     print('Downloading', len(categories), 'categories')

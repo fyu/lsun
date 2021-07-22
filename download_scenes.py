@@ -3,6 +3,7 @@
 from __future__ import print_function, division
 import argparse
 from os.path import join
+from os import makedirs
 
 import subprocess
 from urllib.request import Request, urlopen
@@ -37,6 +38,7 @@ def main():
     parser.add_argument('-o', '--out_dir', default='')
     parser.add_argument('-c', '--category', default=None)
     args = parser.parse_args()
+    makedirs(args.out_dir, exist_ok=True)
 
     categories = list_categories()
     if args.category is None:
