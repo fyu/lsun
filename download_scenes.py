@@ -3,6 +3,7 @@
 from __future__ import print_function, division
 import argparse
 from os.path import join
+from os import makedirs
 
 import subprocess
 from urllib.request import Request, urlopen
@@ -35,8 +36,9 @@ def download(out_dir, category, set_name):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', '--out_dir', default='')
-    parser.add_argument('-c', '--category', default=None)
+    parser.add_argument('-c', '--category', nargs='+', type=str, default=None)
     args = parser.parse_args()
+    makedirs(args.out_dir, exist_ok=True)
 
     categories = list_categories()
     if args.category is None:
@@ -45,15 +47,27 @@ def main():
             download(args.out_dir, category, 'train')
             download(args.out_dir, category, 'val')
         download(args.out_dir, '', 'test')
-    else:
+
+    elif len(args.category) == 1:
+        args.category = args.category[0]
+        if args.category not in categories:
+            print('Error:', args.category, "doesn't exist in", 'LSUN release')
         if args.category == 'test':
             download(args.out_dir, '', 'test')
-        elif args.category not in categories:
-            print('Error:', args.category, "doesn't exist in", 'LSUN release')
         else:
             download(args.out_dir, args.category, 'train')
             download(args.out_dir, args.category, 'val')
 
+    else:
+        print('Downloading', len(args.category), 'categories')
+        for category in args.category:
+            if category not in categories:
+                raise AttributeError('Error:', category, "doesn't exist in", 'LSUN release')
+        for category in args.category:
+            download(args.out_dir, category, 'train')
+            download(args.out_dir, category, 'val')
+
 
 if __name__ == '__main__':
     main()
+
