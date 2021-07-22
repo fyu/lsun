@@ -25,11 +25,18 @@ def download(out_dir, category):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--category', nargs='+', type=str, defualt=None)
     parser.add_argument('-o', '--out_dir', default='')
     args = parser.parse_args()
     makedirs(args.out_dir, exist_ok=True)
-
     categories = ['airplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'dining_table', 'dog', 'horse', 'motorbike', 'person', 'potted_plant', 'sheep', 'sofa', 'train' ,'tv-monitor']
+
+    if args.category is not None:
+        for category in args.category:
+            if category not in categories:
+                raise AttributeError('Error:', args.category, "doesn't exist in", 'LSUN release')
+        categories = args.category
+
     print('Downloading', len(categories), 'categories')
     for category in categories:
         download(args.out_dir, category)
