@@ -27,7 +27,7 @@ def download(out_dir, category, set_name):
     else:
         out_name = '{category}_{set_name}_lmdb.zip'.format(**locals())
     out_path = join(out_dir, out_name)
-    cmd = ['curl', url, '-o', out_path]
+    cmd = ['curl', '-C', '-', url, '-o', out_path]
     print('Downloading', category, set_name, 'set')
     subprocess.call(cmd)
 
