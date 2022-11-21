@@ -57,6 +57,12 @@ Export the images to a folder
 python3 data.py export <image db path> --out_dir <output directory>
 ```
 
+Save the images as jpg files to a folder
+
+```bash
+python2.7 data.py save <image db path> --out_dir <output directory>
+```
+
 ### Example:
 
 Export all the images in valuation sets in the current folder to a

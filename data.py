@@ -53,16 +53,60 @@ def export_images(db_path, out_dir, flat=False, limit=-1):
             if count % 1000 == 0:
                 print('Finished', count, 'images')
 
+def save_images(db_path, out_dir):
+    print('Saving', db_path, 'to', out_dir)
+    env = lmdb.open(db_path, map_size=1099511627776,
+                    max_readers=100, readonly=True)
+    count = 0
+    with env.begin(write=False) as txn:
+        cursor = txn.cursor()
+        for key, val in cursor:
+            image_out_dir = out_dir
+            if not exists(image_out_dir):
+                os.makedirs(image_out_dir)
+            image_out_path = join(image_out_dir, key + '.jpg')
+            img = cv2.imdecode(
+                numpy.fromstring(val, dtype=numpy.uint8), 1)
+            cv2.imwrite(image_out_path, img)
+            count += 1
+            if count % 1000 == 0:
+                print('Finished', count, 'images')
+                
+def save_images_fast(db_path, out_dir, flat=False, limit=-1):
+    print('Saving', db_path, 'to', out_dir)
+    env = lmdb.open(db_path, map_size=1099511627776,
+                    max_readers=100, readonly=True)
+    count = 0
+    with env.begin(write=False) as txn:
+        cursor = txn.cursor()
+        for key, val in cursor:
+            if not flat:
+                image_out_dir = join(out_dir, '/'.join(key[:6]))
+            else:
+                image_out_dir = out_dir
+            if not exists(image_out_dir):
+                os.makedirs(image_out_dir)
+            image_out_path = join(image_out_dir, key + '.jpg')
+            with open(image_out_path, 'w') as fp:
+                fp.write(val)
+            count += 1
+            if count == limit:
+                break
+            if count % 1000 == 0:
+                print('Finished', count, 'images')
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('command', nargs='?', type=str,
-                        choices=['view', 'export'],
+                        choices=['view', 'export', 'save'],
                         help='view: view the images in the lmdb database '
                              'interactively.\n'
                              'export: Export the images in the lmdb databases '
                              'to a folder. The images are grouped in subfolders'
-                             ' determinted by the prefiex of image key.')
+                             ' determinted by the prefiex of image key.\n'
+                             'save: Decode images from lmdb databases and '
+                             ' save as jpg files to a folder.'
+                             ' Requires opencv installed for python2.7.')
     parser.add_argument('lmdb_path', nargs='+', type=str,
                         help='The path to the lmdb database folder. '
                              'Support multiple database paths.')
@@ -81,6 +125,9 @@ def main():
             view(lmdb_path)
         elif command == 'export':
             export_images(lmdb_path, args.out_dir, args.flat)
+        elif command == 'save':
+            #save_images(lmdb_path, args.out_dir)
+            save_images_fast(lmdb_path, args.out_dir, args.flat)
 
 
 if __name__ == '__main__':
